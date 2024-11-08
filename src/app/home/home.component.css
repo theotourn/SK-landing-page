@@ -1,0 +1,66 @@
+/* Conteúdo principal */
+.container {
+  position: relative; /* Garante que o conteúdo fique acima */
+  z-index: 1;
+}
+
+/* CSS */
+.button-sopi {
+  align-items: center;
+  background-color: #7dd8ad;
+  border: 2px solid #000000;
+  border-radius: 8px;
+  box-sizing: border-box;
+  color: #000;
+  cursor: pointer;
+  display: flex;
+  font-size: 16px;
+  height: 58px;
+  justify-content: center;
+  line-height: 24px;
+  max-width: 100%;
+  padding: 0 25px;
+  position: relative;
+  text-align: center;
+  text-decoration: none;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  transition: background-color 0.3s ease;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.button-sopi:after {
+  background-color: #000000;
+  border-radius: 8px;
+  content: "";
+  display: block;
+  height: 58px;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  top: -2px;
+  transform: translate(8px, 8px);
+  transition: transform .2s ease-out;
+  z-index: -1;
+}
+
+.button-sopi:hover:after {
+  transform: translate(0, 0);
+}
+
+.button-sopi:active {
+  background-color: #000000;
+  outline: 0;
+}
+
+.button-sopi:hover {
+  background-color: #33ab72;
+  outline: 0;
+}
+
+@media (min-width: 768px) {
+  .button-sopi {
+    padding: 0 40px;
+  }
+}
