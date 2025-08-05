@@ -64,3 +64,22 @@
     padding: 0 40px;
   }
 }
+
+h1 {
+  text-shadow: 2px 2px 4px #f98c8c;
+}
+
+.btn {
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  border: 5px solid #FFFFFF;
+}
+
+.btn:hover {
+  background-color: rgb(255, 128, 196);
+  color: white;
+  border: 5px solid #FFFFFF;
+}
+
+img {
+}

@@ -47,47 +47,43 @@ export class HomeComponent implements AfterViewInit {
       ctx.fill(path);
     }
 
-    // Criação das estrelas com tamanhos, velocidades, rotações variadas
     for (let i = 0; i < starCount; i++) {
       stars.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
-        size: Math.random() * 10 + 5, // Estrela com tamanho entre 5px e 15px
-        speed: Math.random() * 1 + 0.2, // Velocidade da estrela
-        opacity: Math.random() * 0.5 + 0.5, // Opacidade para variação no brilho
-        spikes: 5, // Número de pontas da estrela
-        rotation: Math.random() * Math.PI * 2, // Aleatória entre 0 e 2 * PI (360 graus)
-        rotationSpeed: (Math.random() - 0.5) * 0.04, // Velocidade de rotação aleatória entre -0.01 e 0.01 rad/s
+        size: Math.random() * 10 + 5, 
+        speed: Math.random() * 1 + 0.2, 
+        opacity: Math.random() * 0.5 + 0.5, 
+        spikes: 5, 
+        rotation: Math.random() * Math.PI * 2, 
+        rotationSpeed: (Math.random() - 0.5) * 0.04,
       });
     }
 
-    // Função para atualizar a posição das estrelas com a repulsão do cursor e rotação
+    
     const updateStars = () => {
       stars.forEach((star) => {
-        // Distância entre o cursor e a estrela
+        
         const dx = star.x - this.mouseX;
         const dy = star.y - this.mouseY;
         const distance = Math.sqrt(dx * dx + dy * dy);
 
-        // Aumenta a força de repulsão para estrelas mais distantes
-        const maxDistance = 10000; // Definindo um máximo alcance de repulsão
-        const distanceFactor = Math.min(maxDistance, distance); // Limita o alcance máximo
-        const force = 5000 / (distanceFactor * distanceFactor + 1); // Maior força de repulsão
+        
+        const maxDistance = 10000; 
+        const distanceFactor = Math.min(maxDistance, distance);
+        const force = 5000 / (distanceFactor * distanceFactor + 1); 
 
-        // Calcula o ângulo de repulsão
+
         const angle = Math.atan2(dy, dx);
 
-        // Repulsão: as estrelas se movem mais rápido para longe do cursor
+
         star.x += Math.cos(angle) * force;
         star.y += Math.sin(angle) * force;
 
-        // Faz a estrela continuar a cair normalmente
         star.y += star.speed;
 
-        // Atualiza a rotação da estrela com a velocidade de rotação
         star.rotation += star.rotationSpeed;
 
-        // Se a estrela passar da tela, reposiciona ela no topo
         if (star.y > canvas.height) {
           star.y = 0;
           star.x = Math.random() * canvas.width;
@@ -95,43 +91,36 @@ export class HomeComponent implements AfterViewInit {
       });
     };
 
-    // Função para desenhar as estrelas
     function drawStars() {
-      ctx.clearRect(0, 0, canvas.width, canvas.height); // Limpa o canvas antes de redesenhar
+      ctx.clearRect(0, 0, canvas.width, canvas.height); 
 
       stars.forEach((star) => {
-        ctx.fillStyle = `rgba(0, 0, 0, ${star.opacity})`; // Cor branca com opacidade para brilho
+        ctx.fillStyle = `rgba(0, 0, 0, ${star.opacity})`; 
 
-        // Salva o estado do contexto antes de aplicar a rotação
         ctx.save();
         
-        // Move o contexto para a posição da estrela para que a rotação aconteça em torno dela
         ctx.translate(star.x, star.y);
         ctx.rotate(star.rotation);
 
-        // Desenha a estrela com o centro no ponto correto
-        drawStar(0, 0, star.size, star.spikes, 0); // Passa as coordenadas centradas no (0,0)
+        drawStar(0, 0, star.size, star.spikes, 0); 
         
-        // Restaura o contexto após a rotação
         ctx.restore();
       });
     }
 
     function animate() {
       drawStars();
-      updateStars(); // Chamando a função que atualiza as estrelas
-      requestAnimationFrame(animate); // Faz a animação repetir
+      updateStars(); 
+      requestAnimationFrame(animate);
     }
 
     animate();
 
-    // Detecta o movimento do mouse e atualiza a posição
     window.addEventListener('mousemove', (event) => {
       this.mouseX = event.clientX;
       this.mouseY = event.clientY;
     });
 
-    // Ajusta o canvas quando a janela for redimensionada
     window.addEventListener('resize', () => {
       canvas.width = window.innerWidth;
       canvas.height = window.innerHeight;

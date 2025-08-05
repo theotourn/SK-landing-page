@@ -1,0 +1,96 @@
+<canvas id="background-stars"></canvas>
+
+<div class="portfolio-back">
+  <div class="container mt-1">
+    <div class="d-flex align-items-center justify-content-center flex-wrap">
+      <div class="text-center mb-2">
+        <img
+          src="assets/profile.jpg"
+          alt="Imagem do Artista"
+          class="profile-img"
+        />
+      </div>
+      <div class="col-md-9 profile-info">
+        <h1 class="mb-3">Sophsopi</h1>
+        <p class="mt-1 fs-5 mb-2">
+          <strong>Descrição:</strong> Artista visual especializado em pintura e
+          escultura.
+        </p>
+        <p class="fs-5 mb-0">
+          <strong>Localização:</strong> Porto Alegre, Rio Grande do Sul
+        </p>
+      </div>
+    </div>
+
+    <div class="mt-4">
+      <h2 class="text-black">Portfolio</h2>
+      <div class="row g-3">
+        <div
+          class="col-6 col-sm-4 col-md-4"
+          *ngFor="let img of images; let i = index"
+        >
+          <button
+            type="button"
+            class="image-wrapper"
+            (click)="openImage(i)"
+            [attr.aria-label]="'Abrir imagem ' + (i + 1)"
+          >
+            <img
+              [src]="img.thumb"
+              [alt]="img.alt"
+              class="gallery-item img-fluid"
+              loading="lazy"
+            />
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div
+  class="lightbox"
+  *ngIf="selectedImage !== null"
+  (click)="closeImage()"
+  role="dialog"
+  aria-modal="true"
+>
+  <div class="lightbox-content" (click)="$event.stopPropagation()">
+    <button
+      type="button"
+      class="lightbox-close"
+      (click)="closeImage()"
+      [attr.aria-label]="'Fechar'"
+    >
+      ✕
+    </button>
+
+    <img
+      [src]="images[selectedImage!].full || images[selectedImage!].thumb"
+      [alt]="images[selectedImage!].alt"
+      class="lightbox-img"
+      (load)="onImageLoad()"
+    />
+
+    <div class="lightbox-caption" *ngIf="images[selectedImage!].caption">
+      {{ images[selectedImage!].caption }}
+    </div>
+
+    <button
+      type="button"
+      class="lightbox-nav left"
+      (click)="prevImage($event)"
+      [attr.aria-label]="'Imagem anterior'"
+    >
+      ‹
+    </button>
+    <button
+      type="button"
+      class="lightbox-nav right"
+      (click)="nextImage($event)"
+      [attr.aria-label]="'Próxima imagem'"
+    >
+      ›
+    </button>
+  </div>
+</div>
