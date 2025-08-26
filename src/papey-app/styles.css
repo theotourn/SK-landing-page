@@ -1,0 +1,147 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Custom styles for the RichTextEditor */
+.custom-richtext-area:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(99, 102, 241, 0.5); /* blue-500 with 50% opacity */
+}
+
+.custom-richtext-area ul {
+    list-style-type: disc;
+    margin-left: 1.25em; /* Equivalent to pl-5 */
+}
+
+.custom-richtext-area ol {
+    list-style-type: decimal;
+    margin-left: 1.25em; /* Equivalent to pl-5 */
+}
+
+.custom-richtext-area h1 {
+    font-size: 2em; /* text-2xl */
+    font-weight: bold;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+}
+
+.custom-richtext-area h2 {
+    font-size: 1.5em; /* text-xl */
+    font-weight: bold;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+}
+
+.custom-richtext-area h3 {
+    font-size: 1.17em; /* text-lg */
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area p {
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5rem; /* rounded-lg */
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); /* shadow-md */
+}
+
+/* Estilos para o scrollbar customizado */
+.custom-scrollbar::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb {
+    background: #888;
+    border-radius: 10px;
+}
+
+.custom-scrollbar::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}
+
+/* Estilos para o modo de exibição do RichTextEditor */
+.custom-richtext-area-display {
+    /* Reset some default browser styles for content coming from dangerouslySetInnerHTML */
+    all: unset; /* Remove all inherited styles */
+    display: block; /* Ensure it behaves like a block element */
+    box-sizing: border-box; /* Include padding and border in the element's total width and height */
+    font-family: inherit; /* Inherit font from parent */
+    font-size: 1rem; /* Base font size */
+    line-height: 1.5; /* Base line height */
+    color: #374151; /* text-gray-700 */
+}
+
+.custom-richtext-area-display p {
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area-display ul {
+    list-style-type: disc;
+    margin-left: 1.25em;
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area-display ol {
+    list-style-type: decimal;
+    margin-left: 1.25em;
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area-display h1 {
+    font-size: 2em;
+    font-weight: bold;
+    margin-top: 0.67em;
+    margin-bottom: 0.67em;
+}
+
+.custom-richtext-area-display h2 {
+    font-size: 1.5em;
+    font-weight: bold;
+    margin-top: 0.83em;
+    margin-bottom: 0.83em;
+}
+
+.custom-richtext-area-display h3 {
+    font-size: 1.17em;
+    font-weight: bold;
+    margin-top: 1em;
+    margin-bottom: 1em;
+}
+
+.custom-richtext-area-display strong,
+.custom-richtext-area-display b {
+    font-weight: bold;
+}
+
+.custom-richtext-area-display em,
+.custom-richtext-area-display i {
+    font-style: italic;
+}
+
+.custom-richtext-area-display u {
+    text-decoration: underline;
+}
+
+.custom-richtext-area-display img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
